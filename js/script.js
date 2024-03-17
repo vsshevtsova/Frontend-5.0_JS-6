@@ -34,12 +34,14 @@ let movieDB = {
         e.preventDefault();
         trash.style.visibility = "hidden";
       });
-      trash.addEventListener("click", () => {
-        delete movieDB.movies[data];
+
+      trash.addEventListener("click", (event) => {
+        movieDB.movies.splice(event, 1);
         divLi.remove();
         console.log(movieDB);
       });
     }
+
     // Сортировка
     const sorted = (arr) => {
       arr.sort();
@@ -68,6 +70,7 @@ let movieDB = {
       movieDB.movies.forEach((name) => {
         addFilm(name);
       });
+      event.target.reset();
       console.log(movieDB.movies);
     });
   },
